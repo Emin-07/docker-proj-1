@@ -1,0 +1,14 @@
+FROM golang:1.26-alpine
+
+WORKDIR /usr/src/app
+
+COPY go.mod go.sum .
+
+RUN go mod download
+
+COPY . .
+
+RUN go build -o my_app
+
+CMD ["./my_app"]
+
